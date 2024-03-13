@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 
 import PropertyHeaderImage from '@/components/PropertyHeaderImage'
 import PropertyDetails from '@/components/PropertyDetails'
+import Spinner from '@/components/Spinner'
 
 import { useEffect, useState } from 'react'
 
@@ -37,6 +38,7 @@ const PropertyPage = () => {
 
   return (
     <>
+      {loading && <Spinner loading={loading} />}
       {!loading && property && (
         <>
           <PropertyHeaderImage image={property.images[0]} />
