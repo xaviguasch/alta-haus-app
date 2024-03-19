@@ -4,6 +4,8 @@ import { useParams } from 'next/navigation'
 
 import PropertyHeaderImage from '@/components/PropertyHeaderImage'
 import PropertyDetails from '@/components/PropertyDetails'
+import PropertyImages from '@/components/PropertyImages'
+
 import Spinner from '@/components/Spinner'
 
 import { useEffect, useState } from 'react'
@@ -141,6 +143,8 @@ const PropertyPage = () => {
               </div>
             </div>
           </section>
+
+          <PropertyImages images={property.images} />
         </>
       )}
     </>
