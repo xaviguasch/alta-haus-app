@@ -6,7 +6,7 @@ import PropertyHeaderImage from '@/components/PropertyHeaderImage'
 import PropertyDetails from '@/components/PropertyDetails'
 import PropertyImages from '@/components/PropertyImages'
 import BookmarkButton from '@/components/BookmarkButton'
-import SharedButtons from '@/components/SharedButtons'
+import ShareButtons from '@/components/ShareButtons'
 import PropertyContactForm from '@/components/PropertyContactForm'
 
 import Spinner from '@/components/Spinner'
@@ -70,7 +70,7 @@ const PropertyPage = () => {
                 <PropertyDetails property={property} />
                 <aside className='space-y-4'>
                   <BookmarkButton property={property} />
-                  <SharedButtons property={property} />
+                  <ShareButtons property={property} />
                   <PropertyContactForm property={property} />
                 </aside>
               </div>
