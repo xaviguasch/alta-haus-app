@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 import { FaPaperPlane, FaPeace } from 'react-icons/fa'
-
+import { toast } from 'react-toastify'
 import { useSession } from 'next-auth/react'
 
 const PropertyContactForm = ({ property }) => {
@@ -26,9 +26,35 @@ const PropertyContactForm = ({ property }) => {
       property: property._id,
     }
 
-    console.log(data)
+    try {
+      const res = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
 
-    setWasSubmitted(true)
+      console.log(res.status)
+
+      if (res.status === 200) {
+        toast.success('Message sent successfully')
+        setWasSubmitted(true)
+      } else if (res.status === 400 || res.status === 401) {
+        const dataObj = await res.json()
+        toast.error(dataObj.message)
+      } else {
+        toast.error('Error sending form')
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error('Error sending form')
+    } finally {
+      setName('')
+      setEmail('')
+      setPhone('')
+      setMessage('')
+    }
   }
 
   return (
